@@ -1,7 +1,7 @@
 $(document).ready(function () {
-  var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+  //var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
   var data = JSON.parse(blocks);
-  //var data = blocks;
+  var data = blocks;
   var i;
   var date = new Date();
   var render;
