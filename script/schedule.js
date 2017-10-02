@@ -13,7 +13,7 @@ $(document).ready(function () {
         $('#display').append('<tr><td><strong>' + render[i].name + ':</strong></td><td><strong>' + render[i].start + '-' + render[i].end + '</strong></td></tr>');
       }
     }
-    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[date.getDay()];
+    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
   } else if (date.getDay() === 2 || date.getDate() === 3 || date.getDate() === 4 || date.getDate() === 5) {
     render = data.regular;
     for (i = 0; i < render.length; i++) {
@@ -23,9 +23,9 @@ $(document).ready(function () {
         $('#display').append('<tr><td><strong>' + render[i].name + ':</strong></td><td><strong>' + render[i].start + '-' + render[i].end + '</strong></td></tr>');
       }
     }
-    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[date.getDay()];
+    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
   } else if (date.getDay() === 0 || date.getDay() === 6) {
-    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[date.getDay()];
+    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
 });
