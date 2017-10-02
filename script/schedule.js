@@ -29,3 +29,7 @@ $(document).ready(function () {
     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
 });
+
+var timeUpdate = setInterval(function () {
+  $('#time').text('The time is ' + new Date().toLocaleTimeString());
+}, 500);
