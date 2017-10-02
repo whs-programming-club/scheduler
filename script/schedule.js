@@ -1,15 +1,20 @@
 $(document).ready(function () {
   var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
-  var data = JSON.parse(blocks);
+  //var data = JSON.parse(blocks);
+  var data = blocks;
   var i;
-  
-  for (i = 0; i < data.length; i++) {
-    var date = new Date();
-    
-    if (date.getDate() === 1) {
-      
-    } else if (date.getDate() === 2 || date.getDate() === 3 || date.getDate() === 4 || date.getDate() === 5) {
-      
+  var date = new Date();
+  var render;
+  if (date.getDay() === 1) {
+    render = data.articulation;
+    for (i = 0; i < render.length; i++) {
+      if (!render[i].bold) {
+        $('#display').append('<tr><td>' + render[i].name + ':</td><td>' + render[i].start + '-' + render[i].end + '</td></tr>');
+      } else if (render[i].bold) {
+        $('#display').append('<tr><td>' + render[i].name + ':</td><td>' + render[i].start + '-' + render[i].end + '</td></tr>');
+      }
     }
+  } else if (date.getDay() === 2 || date.getDate() === 3 || date.getDate() === 4 || date.getDate() === 5) {
+    render = data.regular;
   }
 });
