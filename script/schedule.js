@@ -18,9 +18,14 @@ $(document).ready(function () {
     for (i = 0; i < render.length; i++) {
       if (!render[i].bold) {
         $('#display').append('<tr><td>' + render[i].name + ':</td><td>' + render[i].start + '-' + render[i].end + '</td></tr>');
+        document.getElementsByTagName('title')[0].innerHTML += ': ' + days[date.getDay()];
       } else if (render[i].bold) {
         $('#display').append('<tr><td><strong>' + render[i].name + ':</strong></td><td><strong>' + render[i].start + '-' + render[i].end + '</strong></td></tr>');
       }
     }
+    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[date.getDay()];
+  } else if (date.getDay() === 0 || date.getDay() === 6) {
+    document.getElementsByTagName('title')[0].innerHTML += ': ' + days[date.getDay()];
+    $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
 });
