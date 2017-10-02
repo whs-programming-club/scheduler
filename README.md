@@ -1,1 +1,2 @@
-# scheduler
+# WHS Scheduler
+Made for the students, this page quickly shows the schedule for the day. Pretty useless if you don't attend the school it is made for though...
