@@ -32,5 +32,5 @@ $(document).ready(function () {
 });
 
 var timeUpdate = setInterval(function () {
-  $('#time').text('&nbsp;&nbsp;The time is currently ' + new Date().toLocaleTimeString() + '.');
+  $('#time').html('&nbsp;&nbsp;The time is currently ' + new Date().toLocaleTimeString() + '.');
 }, 500);
