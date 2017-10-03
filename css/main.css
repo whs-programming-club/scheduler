@@ -1,0 +1,21 @@
+body.main {
+  font-family: Courier;
+}
+
+div.main {
+  width: 50%;
+}
+
+table.main {
+  background-color: #800000;
+  color: #D4AF37;
+  padding: 5px;
+  width: 100%;
+}
+
+p.main {
+  background-color: #D4AF37;
+  color: #800000;
+  padding: 5px 0 5px 0;
+  width: 100%;
+}
