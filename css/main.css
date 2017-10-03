@@ -4,6 +4,7 @@ body.main {
 
 div.main {
   width: 50%;
+  margin: auto;
 }
 
 table.main {
@@ -18,4 +19,5 @@ p.main {
   color: #800000;
   padding: 5px 0 5px 0;
   width: 100%;
+  text-align: center;
 }
