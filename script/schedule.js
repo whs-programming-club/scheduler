@@ -26,10 +26,11 @@ $(document).ready(function () {
     document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
   } else if (date.getDay() === 0 || date.getDay() === 6) {
     document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
+    $('#text').show();
     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
 });
 
 var timeUpdate = setInterval(function () {
-  $('#time').text('The time is currently ' + new Date().toLocaleTimeString() + '.');
+  $('#time').text('&nbsp;&nbsp;The time is currently ' + new Date().toLocaleTimeString() + '.');
 }, 500);
