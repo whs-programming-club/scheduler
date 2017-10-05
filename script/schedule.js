@@ -31,12 +31,32 @@ function getNext () {
   var data = blocks;
   var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
   var date = new Date();
+  var render;
   var nextEvent;
   var time = getTimeAdv();
   
   if (date.getDay() !== 0 || date.getDay() !== 6) {
-    while (cycle) {
-      
+    if (date.getDay() === 1) {
+      if (time[0] >= 13) {
+        return 'School is over.';
+      }
+      render = data.articulation;
+    } else {
+      if (time[0] === 2) {
+        if (time[0] >= 40) {
+          return 'School is over.';
+        }
+      } else if (time[0] > 2) {
+        return 'School is over.';
+      }
+      render = data.regular;
+    }
+    for (i = 0; i < render.length; i++) {
+      if (time[0] <= render[i].endHour) {
+        if (time[1] <= render[i].endMinute) {
+          nextEvent = render[i];
+        }
+      }
     }
   }
 }
@@ -73,3 +93,5 @@ $(document).ready(function () {
     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
 });
+// For debugging
+//alert(getNext());
