@@ -5,8 +5,8 @@ var blocks = {
     {"start":"9:21","end":"10:53","name":"Block 2","bold":false,"startHour":9,"startMinute":21,"endHour":10,"endMinute":53},
     {"start":"10:58","end":"12:19","name":"Block 3","bold":false,"startHour":10,"startMinute":58,"endHour":12,"endMinute":19},
     {"start":"12:19","end":"12:44","name":"Intervention","bold":false,"startHour":12,"startMinute":19,"endHour":12,"endMinute":44},
-    {"start":"12:44","end":"1:14","name":"Lunch","bold":true,"startHour":12,"startMinute":44,"endHour":1,"endMinute":14},
-    {"start":"1:19","end":"2:40","name":"Block 4","bold":false,"startHour":1,"startMinute":19,"endHour":2,"endMinute":40}
+    {"start":"12:44","end":"1:14","name":"Lunch","bold":true,"startHour":12,"startMinute":44,"endHour":13,"endMinute":14},
+    {"start":"1:19","end":"2:40","name":"Block 4","bold":false,"startHour":13,"startMinute":19,"endHour":14,"endMinute":40}
   ],
   
   "articulation":[
@@ -14,14 +14,13 @@ var blocks = {
     {"start":"8:58","end":"10:14","name":"Block 2","bold":false,"startHour":8,"startMinute":58,"endHour":10,"endMinute":14},
     {"start":"10:14","end":"10:34","name":"Break/Lunch","bold":true,"startHour":10,"startMinute":14,"endHour":10,"endMinute":34},
     {"start":"10:39","end":"11:47","name":"Block 3","bold":false,"startHour":10,"startMinute":39,"endHour":11,"endMinute":47},
-    {"start":"11:52","end":"1:00","name":"Block 4","bold":false,"startHour":11,"startMinute":52,"endHour":1,"endMinute":0}
+    {"start":"11:52","end":"1:00","name":"Block 4","bold":false,"startHour":11,"startMinute":52,"endHour":13,"endMinute":0}
   ]
 };
 
 // Maintenance Note: Change all `var data = blocks` to `var data = JSON.parse(blocks);` when editing code
 
-function getTimeAdv () {
-  var date = new Date();
+function getTimeAdv (date) {
   return [ date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds() ];
 }
 
@@ -31,9 +30,11 @@ function getNext () {
   var data = blocks;
   var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
   var date = new Date();
+  date.setHours(9);
+  date.setMinutes(30);
   var render;
-  var nextEvent;
-  var time = getTimeAdv();
+  var currentEvent;
+  var time = getTimeAdv(date);
   
   if (date.getDay() !== 0 || date.getDay() !== 6) {
     if (date.getDay() === 1) {
@@ -42,19 +43,21 @@ function getNext () {
       }
       render = data.articulation;
     } else {
-      if (time[0] === 2) {
+      if (time[0] === 14) {
         if (time[0] >= 40) {
           return 'School is over.';
         }
-      } else if (time[0] > 2) {
+      } else if (time[0] > 14) {
         return 'School is over.';
       }
       render = data.regular;
     }
+    
     for (i = 0; i < render.length; i++) {
       if (time[0] <= render[i].endHour) {
         if (time[1] <= render[i].endMinute) {
-          nextEvent = render[i];
+          currentEvent = render[i];
+          return currentEvent.name + ' ends in ' + Math.floor(currentEvent.endHour - time[0]);
         }
       }
     }
@@ -93,5 +96,5 @@ $(document).ready(function () {
     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
 });
-// For debugging
-//alert(getNext());
+
+alert(getNext());
