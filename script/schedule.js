@@ -31,7 +31,7 @@ function getNext () {
   var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
   var date = new Date();
   date.setHours(9);
-  date.setMinutes(30);
+  date.setMinutes(54);
   var render;
   var currentEvent;
   var time = getTimeAdv(date);
@@ -52,16 +52,23 @@ function getNext () {
       }
       render = data.regular;
     }
-    
+
     for (i = 0; i < render.length; i++) {
       if (time[0] <= render[i].endHour) {
         if (time[1] <= render[i].endMinute) {
           currentEvent = render[i];
+          if (currentEvent.endMinute >= time[1] && currentEvent.endHour - time[0]) {
+            alert();
+          }
           return currentEvent.name + ' ends in ' + Math.floor(currentEvent.endHour - time[0]);
         }
+      } else if (time[0] <= render[i].endHour) {
+        alert();
       }
+      //console.log(render[i].name);
     }
   }
+  //return '' + time[0] + ',' + render[2].endHour;
 }
 
 $(document).ready(function () {
