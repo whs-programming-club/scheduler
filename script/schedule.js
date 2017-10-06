@@ -14,7 +14,7 @@ $(document).ready(function () {
       }
     }
     document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
-  } else if (date.getDay() === 2 || date.getDate() === 3 || date.getDate() === 4 || date.getDate() === 5) {
+  } else if (date.getDay() === 2 || date.getDay() === 3 || date.getDay() === 4 || date.getDay() === 5) {
     render = data.regular;
     for (i = 0; i < render.length; i++) {
       if (!render[i].bold) {
