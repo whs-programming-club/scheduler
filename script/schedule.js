@@ -38,37 +38,25 @@ function getNext () {
   
   if (date.getDay() !== 0 || date.getDay() !== 6) {
     if (date.getDay() === 1) {
-      if (time[0] >= 13) {
-        return 'School is over.';
-      }
       render = data.articulation;
     } else {
-      if (time[0] === 14) {
-        if (time[0] >= 40) {
-          return 'School is over.';
-        }
-      } else if (time[0] > 14) {
-        return 'School is over.';
-      }
       render = data.regular;
     }
-
+    
+    var currentTime = 0;
+    var nextTime = 0;
+    var hoursLeft = 0;
+    var minutesLeft = 0;
     for (i = 0; i < render.length; i++) {
-      if (time[0] <= render[i].endHour) {
-        if (time[1] <= render[i].endMinute) {
-          currentEvent = render[i];
-          if (currentEvent.endMinute >= time[1] && currentEvent.endHour - time[0]) {
-            alert();
-          }
-          return currentEvent.name + ' ends in ' + Math.floor(currentEvent.endHour - time[0]);
-        }
-      } else if (time[0] <= render[i].endHour) {
-        alert();
+      currentTime = (time[0] * 60) + time[1];
+      nextTime = (render[i].endHour * 60) + render[i].endMinute;
+      if (currentTime < nextTime) {
+        hoursLeft = Math.floor((nextTime - currentTime) / 60);
+        minutesLeft = Math.floor((nextTime - (hoursLeft * 60)) - currentTime);
+        return 'There are ' + hoursLeft + ' hours left and ' + minutesLeft + ' minutes left until ' + render[i].name;
       }
-      //console.log(render[i].name);
     }
   }
-  //return '' + time[0] + ',' + render[2].endHour;
 }
 
 $(document).ready(function () {
@@ -87,7 +75,7 @@ $(document).ready(function () {
       }
     }
     document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
-  } else if (date.getDay() === 2 || date.getDate() === 3 || date.getDate() === 4 || date.getDate() === 5) {
+  } else if (date.getDay() === 2 || date.getDay() === 3 || date.getDay() === 4 || date.getDay() === 5) {
     render = data.regular;
     for (i = 0; i < render.length; i++) {
       if (!render[i].bold) {
