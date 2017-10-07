@@ -54,7 +54,7 @@ function getNext () {
         if (hoursLeft === 0) {
           return minutesLeft + ' minutes until the end of ' + render[i].name;
         } else if (hoursLeft !== 0) {
-          return hoursLeft + ' hours and ' + minutesLeft + ' until the end of ' + render[i].name;
+          return hoursLeft + ' hours and ' + minutesLeft + ' minutes until the end of ' + render[i].name;
         }
       }
     }
