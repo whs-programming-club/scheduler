@@ -75,3 +75,8 @@ $(document).ready(function () {
     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
 });
+
+var timeUpdate = setInterval(function () {
+  $('#time').html('The time is currently ' + new Date().toLocaleTimeString() + '.');
+  $('#next').html(getNext());
+}, 500);
