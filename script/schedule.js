@@ -26,6 +26,11 @@ function getTimeAdv (date) {
   return [ date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds() ];
 }
 
+function timeUpdate () {
+  $('#time').html('The time is currently ' + new Date().toLocaleTimeString() + '.');
+  $('#next').html(getNext());
+}
+
 function getNext () {
   var i;
   var cycle = true;
@@ -95,9 +100,10 @@ $(document).ready(function () {
     $('#text').show();
     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
   }
+  
+  timeUpdate();
+  
+  var clock = setInterval(function () {
+    timeUpdate();
+  }, 500);
 });
-
-var timeUpdate = setInterval(function () {
-  $('#time').html('The time is currently ' + new Date().toLocaleTimeString() + '.');
-  $('#next').html(getNext());
-}, 500);
