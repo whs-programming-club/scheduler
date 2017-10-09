@@ -29,7 +29,7 @@
  function getNext () {
    var i;
    var cycle = true;
-   var data = blocks;
+   var data = JSON.parse(blocks);
    var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
    var date = new Date();
    var render;
@@ -66,7 +66,7 @@
  
  $(document).ready(function () {
    var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
-   var data = blocks;
+   var data = JSON.parse(blocks);
    var i;
    var date = new Date();
    var render;
