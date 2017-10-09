@@ -1,3 +1,4 @@
+/*
 var blocks = {
   "regular":[
     {"start":"7:45","end":"9:06","name":"Block 1","bold":false,"startHour":7,"startMinute":45,"endHour":9,"endMinute":6},
@@ -17,6 +18,7 @@ var blocks = {
     {"start":"11:52","end":"1:00","name":"Block 4","bold":false,"startHour":11,"startMinute":52,"endHour":13,"endMinute":0}
   ]
 };
+*/
 
 // Maintenance Note: Change all `var data = blocks` to `var data = JSON.parse(blocks);` when editing code
 
