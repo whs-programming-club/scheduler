@@ -1,4 +1,4 @@
-+/*
+/*
   var blocks = {
     "regular":[
       {"start":"7:45","end":"9:06","name":"Block 1","bold":false,"startHour":7,"startMinute":45,"endHour":9,"endMinute":6},
