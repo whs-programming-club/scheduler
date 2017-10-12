@@ -1,4 +1,4 @@
-  var blocks = {
+var blocks = {
     highSchool: {
       "regular":[
         {"start":"7:45","end":"9:06","name":"Block 1","bold":false,"startHour":7,"startMinute":45,"endHour":9,"endMinute":6},
@@ -32,21 +32,37 @@
         {"start":"12:49","end":"1:30","name":"Second Lunch","bold":true,"startHour":12,"startMinute":49,"endHour":1,"endMinute":30},
         {"start":"1:33","end":"2:20","name":"Period 6","bold":false,"startHour":13,"startMinute":33,"endHour":14,"endMinute":20},
         {"start":"2:23","end":"3:10","name":"Period 7","bold":false,"startHour":14,"startMinute":23,"endHour":15,"endMinute":10}
+      ],
+      
+      "articulation":[
+        {"start":"7:30","end":"8:20","name":"0 Period","bold":false,"startHour":7,"startMinute":30,"endHour":8,"endMinute":20},
+        {"start":"8:30","end":"8:37","name":"Homeroom","bold":false,"startHour":8,"startMinute":30,"endHour":8,"endMinute":37},
+        {"start":"8:40","end":"9:17","name":"Period 1","bold":false,"startHour":8,"startMinute":40,"endHour":9,"endMinute":17},
+        {"start":"9:20","end":"9:57","name":"Period 2","bold":false,"startHour":9,"startMinute":20,"endHour":9,"endMinute":57},
+        {"start":"9:57","end":"10:04","name":"Break","bold":true,"startHour":9,"startMinute":57,"endHour":10,"endMinute":4},
+        {"start":"10:04","end":"10:41","name":"Period 3","bold":false,"startHour":10,"startMinute":4,"endHour":10,"endMinute":41},
+        {"start":"10:44","end":"11:21","name":"Period 4","bold":false,"startHour":10,"startMinute":44,"endHour":11,"endMinute":21},
+        {"start":"11:24","end":"11:58","name":"First Lunch","bold":true,"startHour":11,"startMinute":24,"endHour":11,"endMinute":58},
+        {"start":"12:02","end":"12:36","name":"Second Lunch","bold":true,"startHour":12,"startMinute":2,"endHour":12,"endMinute":36},
+        {"start":"12:39","end":"1:16","name":"Period 6","bold":false,"startHour":12,"startMinute":39,"endHour":13,"endMinute":16},
+        {"start":"1:19","end":"1:56","name":"Period 7","bold":false,"startHour":13,"startMinute":19,"endHour":13,"endMinute":56}
       ]
     }
   };
   
-  // Maintenance Note: Change all `var data = blocks` to `var data = JSON.parse(blocks);` when editing code
+  // Maintenance Note: Change `return blocks.middleSchool` to `return` when editing code
 
  var data = getSchool();
 
  function getSchool () {
+   //var $Data = JSON.parse(blocks);
+   var $Data = blocks;
    if (document.getElementsByName('school').value === 'high') {
      
-   } else if (document.getElementsByName('school').value === 'high') {
+   } else if (document.getElementsByName('school').value === 'middle') {
      
    } else {
-     return blocks.highSchool;
+     return $Data.middleSchool;
    }
  }
 
