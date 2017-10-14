@@ -4,10 +4,18 @@
   <title>WHS Schedule</title>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://whs-computerclub.github.io/scheduler/data/blocks.json"></script>
-  <script type="text/javascript" src="https://whs-computerclub.github.io/scheduler/script/schedule.js"></script>
   <link rel="stylesheet" href="https://whs-computerclub.github.io/scheduler/css/main.css"/>
 </head>
 <body class="main">
+  <span class="close" id="show" onclick="nav()" style="position: fixed">&#x2630;</span>
+  <div class="nav" id="side-nav" hidden>
+    <span id="close" class="close" onclick="nav()">&times;</span>
+    <p>Select Grade Level</p>
+    <span class="button" onclick="school('high')">High School</span>
+    <br/>
+    <br/>
+    <span class="button" onclick="school('middle')">Middle School</span>
+  </div>
   <div class="main">
     <table id="display" class="main"></table>
     <p id="next" class="main"></p>
