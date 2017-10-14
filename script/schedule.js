@@ -55,8 +55,8 @@
  var data = getSchool();
 
  function getSchool () {
-   //var $Data = JSON.parse(blocks);
-   var $Data = blocks;
+   var $Data = JSON.parse(blocks);
+   //var $Data = blocks;
    if (document.getElementsByName('school').value === 'high') {
      
    } else if (document.getElementsByName('school').value === 'middle') {
@@ -145,8 +145,9 @@
  }
 
  function school (level) {
-   //var pa = JSON.parse(blocks);
-   var pa = data;
+   $('#display').empty();
+   var pa = JSON.parse(blocks);
+   //var pa = blocks;
    if (level === 'high') {
      data = pa.highSchool;
    } else if (level === 'middle') {
@@ -184,7 +185,7 @@
    }
  }
  
- /*var timeUpdate = setInterval(function () {
+ var timeUpdate = setInterval(function () {
    $('#time').html('The time is currently ' + new Date().toLocaleTimeString() + '.');
    $('#next').html(getNext());
- }, 500);*/
+ }, 500);
