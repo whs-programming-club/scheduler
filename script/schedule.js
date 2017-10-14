@@ -1,4 +1,4 @@
-  /*var blocks = {
+  var blocks = {
     highSchool: {
       "regular":[
         {"start":"7:45","end":"9:06","name":"Block 1","bold":false,"startHour":7,"startMinute":45,"endHour":9,"endMinute":6},
@@ -48,7 +48,7 @@
         {"start":"1:19","end":"1:56","name":"Period 7","bold":false,"startHour":13,"startMinute":19,"endHour":13,"endMinute":56}
       ]
     }
-  };*/
+  };
   
   // Maintenance Note: Change `return blocks.middleSchool` to `return` when editing code
 
@@ -138,6 +138,52 @@
      $('#text').text("No school today, it's " + days[date.getDay()] + "!");
    }
  });
+
+ function nav () {
+   $('#side-nav').toggle();
+   $('#show').toggle();
+ }
+
+ function school (level) {
+   $('#display').empty();
+   var pa = JSON.parse(blocks);
+   //var pa = blocks;
+   if (level === 'high') {
+     data = pa.highSchool;
+   } else if (level === 'middle') {
+     data = pa.middleSchool;
+   }
+      
+   var days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ];
+   var i;
+   var date = new Date();
+   var render;
+   if (date.getDay() === 1) {
+     render = data.articulation;
+     for (i = 0; i < render.length; i++) {
+       if (!render[i].bold) {
+         $('#display').append('<tr><td>' + render[i].name + ':</td><td>' + render[i].start + '-' + render[i].end + '</td></tr>');
+       } else if (render[i].bold) {
+         $('#display').append('<tr><td><strong>' + render[i].name + ':</strong></td><td><strong>' + render[i].start + '-' + render[i].end + '</strong></td></tr>');
+       }
+     }
+     document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
+   } else if (date.getDay() === 2 || date.getDay() === 3 || date.getDay() === 4 || date.getDay() === 5) {
+     render = data.regular;
+     for (i = 0; i < render.length; i++) {
+       if (!render[i].bold) {
+         $('#display').append('<tr><td>' + render[i].name + ':</td><td>' + render[i].start + '-' + render[i].end + '</td></tr>');
+       } else if (render[i].bold) {
+         $('#display').append('<tr><td><strong>' + render[i].name + ':</strong></td><td><strong>' + render[i].start + '-' + render[i].end + '</strong></td></tr>');
+       }
+     }
+     document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
+   } else if (date.getDay() === 0 || date.getDay() === 6) {
+     document.getElementsByTagName('title')[0].innerHTML += ': ' + days[new Date().getDay()];
+     $('#text').show();
+     $('#text').text("No school today, it's " + days[date.getDay()] + "!");
+   }
+ }
  
  var timeUpdate = setInterval(function () {
    $('#time').html('The time is currently ' + new Date().toLocaleTimeString() + '.');
