@@ -28,6 +28,7 @@ p.main {
   color: #000;
   padding: 5px;
   height: 100%;
+  box-shadow: 5px 0 #800000;
 }
 
 .close {
