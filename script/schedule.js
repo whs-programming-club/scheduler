@@ -140,7 +140,7 @@
  });
 
  function nav () {
-   $('#side-nav').slideToggle(500);
+   $('#side-nav').slideToggle(1000);
    $('#show').toggle();
  }
 
